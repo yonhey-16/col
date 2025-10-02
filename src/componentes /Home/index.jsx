@@ -7,6 +7,7 @@ import "./style.css";
 function Home () {
 	const [departamentos, setDepartamentos] = useState(null);
     const [capitales, setCapitales] = useState(null);
+	const [modo, setModo] = useState("capitales");
 
 	useEffect(() => {
     const urlDpt =
@@ -36,24 +37,27 @@ function Home () {
 	return (
 		<>
 		<div >
-			<button>
-				Mostrar Departamentos
-			</button>
+			<button onClick={() => setModo("departamentos")}> Mostrar Departamentos</button>
+			<button onClick={() => setModo("capitales")}> Mostrar Capitales</button>
 		</div>
+
 		<div>
 			<input
 			type='text'
 			placeholder='Buscar ´por nombre...'/>
 		</div>	
-		<div>
-			<p>Municipio <span>numero de votos</span></p>
-			<div>
-				<p>Candidatos: </p>
-				<ul>
-					<li>candidato1</li>
-					<li>candidato2</li>
-				</ul>
-			</div>
+		<div className="lugar">
+			{ // depar
+			!capitales ? (
+				<p>Cargando...</p>
+			) : (
+				capitales.data.cpt.map((item) => (
+					<p key={item.id}>
+						{item.nm}
+						</p>)
+				)
+			)
+			}
 		</div>
 		</>
 	);
