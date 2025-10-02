@@ -1,4 +1,8 @@
 
+import { BrowserRouter as Router, Route, Routes, Link, Navigate } from 'react-router-dom';
+
+import React, { useState } from 'react';
+
 import Detalle from './componentes /Detalle';
 import Favoritos from './componentes /Favoritos';
 import Home from './componentes /Home';
