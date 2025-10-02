@@ -8,6 +8,7 @@ function Home () {
 	const [departamentos, setDepartamentos] = useState(null);
     const [capitales, setCapitales] = useState(null);
 	const [modo, setModo] = useState("capitales");
+	const [busqueda, setBusqueda] = useState("");
 
 	useEffect(() => {
     const urlDpt =
