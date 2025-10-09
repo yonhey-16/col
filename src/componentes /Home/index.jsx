@@ -7,7 +7,7 @@ import "./style.css";
 function Home () {
 	const [departamentos, setDepartamentos] = useState(null);
     const [capitales, setCapitales] = useState(null);
-	const [modo, setModo] = useState("capitales");
+	const [modo, setModo] = useState("departamentos");
 	const [busqueda, setBusqueda] = useState("");
 
 	useEffect(() => {
@@ -31,8 +31,27 @@ function Home () {
     fetchJson(urlCpt, setCapitales);
 	
   }, []);
-  	console.log(departamentos);
-    console.log(capitales);
+  const getListaMostrar = () => {
+	if (modo === "departamentos"&& departamentos) {
+		return departamentos.data?.dpt ?? [];
+	}
+	if (modo === "capitales" && capitales) {
+		return capitales.data?.cpt ?? [];
+	}
+	return [];
+  }
+  const lista = getListaMostrar();
+
+  //
+  let listaFiltrada;
+
+  if (busqueda.length >= 2) {
+    listaFiltrada = lista.filter((unavuelta) =>
+      unavuelta.nm.toLowerCase().includes(busqueda.toLowerCase())
+    );
+  } else {
+    listaFiltrada = lista; // sin filtrar
+  };
 
 
 	return (
@@ -45,20 +64,23 @@ function Home () {
 		<div>
 			<input
 			type='text'
-			placeholder='Buscar ´por nombre...'/>
+			placeholder='Buscar por nombre...'
+			value={busqueda}
+			onChange={(e) => setBusqueda(e.target.value)}
+			/>
 		</div>	
 		<div className="lugar">
-			{ // depar
-			!capitales ? (
-				<p>Cargando...</p>
-			) : (
-				capitales.data.cpt.map((item) => (
-					<p key={item.id}>
-						{item.nm}
-						</p>)
-				)
-			)
-			}
+			<ul className="lista">
+        {listaFiltrada.length > 0 ? (
+          listaFiltrada.map((unelementociclo) => (
+            <li key={unelementociclo.id}>
+              {unelementociclo.nm}
+            </li>
+          ))
+        ) : (
+          <p>Cargando datos...</p>
+        )}
+      </ul>
 		</div>
 		</>
 	);

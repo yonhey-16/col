@@ -13,13 +13,24 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <>
-      <Detalle />
-      <Favoritos />
-      <Home />
-      <Informativa />
-      <Mapa />
-    </>
+     <Router>
+
+          <nav className="c-menu">
+            <Link to="/">Home</Link>
+            <Link to="/informativa">Informativa</Link>
+            <Link to="/mapa">Mapa</Link>
+            <Link to="/favoritos">Favoritos</Link>
+          </nav>
+
+
+        <Routes>
+            <Route path="/" element={<Home /> } />
+            <Route path="/informativa" element={<Informativa /> } />
+            <Route path="/mapa" element={<Mapa /> } />
+            <Route path="/favoritos" element={<Favoritos /> } />
+            <Route path="/detalle/:depto/:municipio" element={<Detalle /> } />
+        </Routes>
+      </Router>
   )
 }
 
