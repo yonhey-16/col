@@ -1,0 +1,96 @@
+/* 🌟 ESTILOS GENERALES */
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* 🚀 LOGO ANIMADO */
+.logo {
+  height: 8em;
+  padding: 1.5em;
+  transition: transform 0.4s ease, filter 0.4s ease;
+  filter: drop-shadow(0 0 1em rgba(255, 255, 255, 0.3));
+}
+
+.logo:hover {
+  transform: scale(1.15) rotate(10deg);
+  filter: drop-shadow(0 0 2em #00ffff);
+}
+
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafb);
+}
+
+/* ✨ ANIMACIÓN LOGO GIRATORIO */
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .logo.spin {
+    animation: logo-spin infinite 10s linear;
+  }
+}
+
+/* 💳 TARJETAS */
+.card {
+  padding: 2.5em;
+  margin: 1.5em auto;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 0 35px rgba(0, 255, 255, 0.5);
+}
+
+/* 📖 TEXTO INFORMATIVO */
+.read-the-docs {
+  color: #aaa;
+  font-style: italic;
+  font-size: 0.95rem;
+  margin-top: 1.5em;
+  transition: color 0.3s ease;
+}
+
+.read-the-docs:hover {
+  color: #00ffff;
+}
+
+/* 💫 BOTONES (si los usas) */
+button {
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
+  border: none;
+  padding: 0.75em 1.5em;
+  color: white;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+}
+
+button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.8);
+}
